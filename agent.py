@@ -1,13 +1,3 @@
-class MedicationAgent:
-    def __init__(self, protocol, state, llm):
-        self.protocol = protocol
-        self.state = state
-        self.llm = llm
-
-    def process_input(self, user_input):
-        # Main orchestration logic goes here
-        pass
-
 #!/usr/bin/env python3
 # agent.py - Provides orchestration forthe agent to pursues goal by stepwise decision
 __version__ = '0.1'

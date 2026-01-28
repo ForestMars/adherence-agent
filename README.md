@@ -58,8 +58,8 @@ Both agents optimize for dual objectives: reducing system costs (preventing avoi
    │ - Compliance│         │ - Cost drivers   │           │
    │ - Outcomes  │         │ - Interventions  │           ↓
    └─────────────┘         └──────────────────┘    ┌──────────────┐
-                                                  │ Collibra API │
-                                                  └──────────────┘
+                                                   │ Collibra API │
+                                                   └──────────────┘
 
 External Integrations:
 ┌──────────────┐  ┌──────────────┐

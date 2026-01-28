@@ -39,7 +39,7 @@ Both agents optimize for dual objectives: reducing system costs (preventing avoi
                             │ Cohort Data Store        │
                             │ - Compliance history     │
                             │ - Clinical outcomes      │
-                            │ - Cost data             │
+                            │ - Cost data              │
                             └────────┬─────────────────┘
                                      │
                                      ↓

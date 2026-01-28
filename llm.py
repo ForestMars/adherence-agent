@@ -1,14 +1,9 @@
-class LLMWrapper:
-    def __init__(self, model_name="gpt-4"):
-        self.model_name = model_name
-
-    def generate_response(self, prompt):
-        # LLM call integration
-        return f"Response to: {prompt}"
 
 #!/usr/bin/env python3
-# llm.py - Provider-agnostic LLM interface - 
+# llm.py - Provider-agnostic LLM interface 
+__author__ = 'Forest Mars for Continuum Software'
 __version__ = '0.1'
+__all__ = [AnthropicProvider]
 
 from abc import ABC, abstractmethod
 from typing import List, Dict, Any

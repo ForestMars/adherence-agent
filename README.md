@@ -70,7 +70,7 @@ External Integrations:
 ```
 
 ## Files 
-
+```
 medication-agent/
 ├── agent.py                 # Agent orchestration (provider-agnostic)
 ├── protocol.py              # Goal and guidelines
@@ -80,7 +80,7 @@ medication-agent/
 ├── main.py                  # Entry point
 ├── requirements.txt
 └── README.md
-
+```
 ## Design Principles
 
 **Care Plan as Contract**: Each patient has a care plan instantiated from templates. Compliance is measured against this plan, not abstract ideals. The plan defines what "success" means.

@@ -1,15 +1,28 @@
 #!/usr/bin/env python3
 # agent.py - Provides orchestration forthe agent to pursues goal by stepwise decision
+__author__ = 'Forest Mars for Continuum Software'
 __version__ = '0.1'
+__all__ = [MedicationAgent]
 
 import json
 from state import ConversationState, Patient
 from llm import LLM
 from protocol import AGENT_GOAL, PATIENT_SAFETY_GUIDELINES, AVAILABLE_ACTIONS
 
+DECISION_PROMPT_PATH = Path(
+    os.getenv('DECISION_PROMPT_PATH', 
+              Path(__file__).parent / "prompts" / "decision_prompt.txt")
+)
+GREETING_PROMPT_PATH = Path(
+    os.getenv('GREETING_PROMPT_PATH',
+              Path(__file__).parent / "prompts" / "greeting_prompt.txt")
+)
+
 class MedicationAgent:
     def __init__(self, llm: LLM):
         self.llm = llm
+        self.decision_prompt_template = self._load_prompt(DECISION_PROMPT_PATH)
+        self.greeting_prompt_template = self._load_prompt(GREETING_PROMPT_PATH)
     
     def start_call(self, patient: Patient) -> ConversationState:
         """Initialize a new call with a patient"""
@@ -110,37 +123,7 @@ class MedicationAgent:
         
         conv_text += f"\nPATIENT: {patient_latest_response}"
         
-        prompt = f"""You are a medication adherence agent. Your goal:
-
-{AGENT_GOAL}
-
-Patient Information:
-- Name: {state.patient.name}
-- Medication: {state.patient.medication_name}
-- Schedule: {state.patient.medication_schedule}
-
-{PATIENT_SAFETY_GUIDELINES}
-
-Available Actions:
-{json.dumps(AVAILABLE_ACTIONS, indent=2)}
-
-Conversation so far:
-{conv_text}
-
-Decide what to do next. You should:
-1. Assess what information you still need
-2. Determine if you've learned anything concerning
-3. Choose the most appropriate action
-4. Be natural and conversational, not robotic
-
-Respond ONLY with a JSON object:
-{{
-    "action": "ask_question|provide_information|escalate_to_nurse|schedule_callback|end_call",
-    "reasoning": "brief explanation of why you chose this action",
-    "content": "what you'll say to the patient (if asking/informing)",
-    "escalation_reason": "if escalating, why?",
-    "information_gathered": {{"key": "value"}}
-}}"""
+        prompt = f""" """
 
         response_text = self.llm.generate(
             messages=[{"role": "user", "content": prompt}],
